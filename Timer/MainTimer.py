@@ -2,6 +2,8 @@ import time
 import sys
 from appJar import gui
 import threading
+from playsound import playsound
+
 
 stop_threads = False
 
@@ -60,6 +62,7 @@ def runTimer(hou, min, sec):
 
         if int(hours) == int(timeInput[0]) and int(minutes) == int(timeInput[1]) and int(seconds) == int(timeInput[2]):
             windowTimer.setMessage("Report", "!!!TIME PASSED!!!")
+            playsound('EER.mp3')
             runTimer = False
 
 
@@ -71,8 +74,11 @@ if __name__ == '__main__':
     windowTimer.addLabel("title", "This is a basic Timer")
     windowTimer.setLabelBg("title", "gray")
     windowTimer.addLabelEntry("Hours")
+    windowTimer.setEntry("Hours", "0")
     windowTimer.addLabelEntry("Minutes")
+    windowTimer.setEntry("Minutes", "0")
     windowTimer.addLabelEntry("Seconds")
+    windowTimer.setEntry("Seconds", "0")
     windowTimer.addButtons(["Accept", "Abort"], press)
     windowTimer.addMessage("Report", """The time will be shown here""")
 

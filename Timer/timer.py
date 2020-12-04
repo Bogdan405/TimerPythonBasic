@@ -1,6 +1,9 @@
 import time
 import sys
 from appJar import gui
+# appJar can be found here, it is a great library for basic GUIs
+# http://appjar.info/
+
 import threading
 from playsound import playsound
 
@@ -28,6 +31,20 @@ def runTimer(hou, min, sec):
     minutes = 0
     hours = 0
     runTimer = True
+    hou = int(hou)
+    sec = int(sec)
+    min = int(min)
+    if(sec >= 60):
+        amount = 0
+        amount += int(sec / 60)
+        min += amount
+        sec = sec - (amount * 60)
+    if (min >= 60):
+        amount = 0
+        amount += int(min / 60)
+        hou += amount
+        min = min - (min * 60)
+
     timeInput = [hou, min, sec]
 
     current = time.time()
@@ -45,6 +62,7 @@ def runTimer(hou, min, sec):
         ongoingTime += " "
         ongoingTime += str(seconds)
         ongoingTime += " "
+
 
         windowTimer.setMessage("Report", ongoingTime)
 
@@ -81,6 +99,7 @@ if __name__ == '__main__':
     windowTimer.setEntry("Seconds", "0")
     windowTimer.addButtons(["Accept", "Abort"], press)
     windowTimer.addMessage("Report", """The time will be shown here""")
+    windowTimer.setMessageWidth("Report", 400)
 
     windowTimer.setFont(20)
     windowTimer.go()

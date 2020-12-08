@@ -84,10 +84,9 @@ def runTimer(hou, min, sec):
             runTimer = False
 
 
-
 if __name__ == '__main__':
     print("starting . . . ")
-    print("Plese enter the time you wish as hours minutes seconds")
+    #print("Plese enter the time you wish as hours minutes seconds")
 
     windowTimer.addLabel("title", "This is a basic Timer")
     windowTimer.setLabelBg("title", "gray")
@@ -104,11 +103,4 @@ if __name__ == '__main__':
     windowTimer.setFont(20)
     windowTimer.go()
 
-
-
-    #Carefull modifications required here
-    #timeInputText = input()
-    #timeInput = timeInputText.split()
-
-    #print(timeInput[0], timeInput[1], timeInput[2])
 
